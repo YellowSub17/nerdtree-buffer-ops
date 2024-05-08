@@ -9,7 +9,7 @@ if exists("s:loaded")
 endif
 let s:loaded = 1
 
-call NERDTreeAddMenuItem({'text': '(q)uit the current buffer', 'shortcut': 'q', 'callback': 'NerdTreeBufWipeout'})
+call NERDTreeAddMenuItem({'text': '(q)uit the current buffer', 'shortcut': 'q', 'callback': 'NERDTreeBufWipeout'})
 
 call NERDTreeAddKeyMap({
             \ 'key': 'q',
