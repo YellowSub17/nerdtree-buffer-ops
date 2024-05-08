@@ -2,6 +2,7 @@
 " Description: plugin for NERD Tree that provides a buffer wipeout command
 " Notes:       The logic in NERDTreeBufWipeout is a modified version of that found here:
 "              http://vim.wikia.com/wiki/Deleting_a_buffer_without_closing_the_window
+" PA: Edit call to q and refresh tree to update highlighingt
 " ============================================================================
 if exists("s:loaded")
     finish
@@ -9,7 +10,7 @@ endif
 let s:loaded = 1
 
 call NERDTreeAddKeyMap({
-            \ 'key': 'w',
+            \ 'key': 'q',
             \ 'callback': 'NERDTreeBufWipeout',
             \ 'quickhelpText': 'Wipeout file''s buffer',
             \ 'override': 0,
@@ -46,4 +47,5 @@ function! NERDTreeBufWipeout(fileNode)
     execute 'confirm bwipeout'.' '.bufferNumber
     execute wcurrent.'wincmd w'
     call nerdtree#echo("Buffer ". bufferNumber ." [". fnamemodify(a:fileNode.path.str(),":t") ."] was wiped out.")
+    call nerdtree#renderView()
 endfunction
